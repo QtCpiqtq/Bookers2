@@ -14,14 +14,13 @@
     <header>
       <% if user_signed_in? %>
         <li>
-          <%= link_to "Home", root_path %>
+          <%= link_to "Home", user_path(current_user.id) %>
         </li>
         <li>
-          <%= link_to "About", about_path %>
+          <%= link_to "Users", users_path %>
         </li>
-        <!--パス修正必要-->
         <li>
-          <%= link_to "Books", root_path  %>
+          <%= link_to "Books", books_path  %>
         </li>
         <li>
           <%= link_to "Log out", destroy_user_session_path, method: :delete %>
@@ -41,6 +40,7 @@
         </li>
       <% end %>
     </header>
+    <%= flash[:notice] %>
     <%= yield %>
   </body>
 </html>
