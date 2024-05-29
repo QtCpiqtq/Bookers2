@@ -6,44 +6,89 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://kit.fontawesome.com/9e53aa1d06.js" crossorigin="anonymous"></script>
+
   </head>
 
   <body>
-    <header>
-      <li>
-        <%= link_to "Bookers", root_path %>
-      </li>
-      <% if user_signed_in? %>
-        <li>
-          <%= link_to "Home", user_path(current_user.id) %>
-        </li>
-        <li>
-          <%= link_to "Users", users_path %>
-        </li>
-        <li>
-          <%= link_to "Books", books_path  %>
-        </li>
-        <li>
-          <%= link_to "Log out", destroy_user_session_path, method: :delete %>
-        </li>
-      <% else %>
-        <li>
-          <%= link_to "Home", root_path %>
-        </li>
-        <li>
-          <%= link_to "About", about_path %>
-        </li>
-        <li>
-          <%= link_to "Sign up", new_user_registration_path %>
-        </li>
-         <li>
-          <%= link_to "Log in", new_user_session_path %>
-        </li>
-      <% end %>
+    <header class = "bg-dark">
+      <nav class = "navbar">
+        <div class = "container">
+          <div class = "navbar-brand">
+            <%= link_to "Bookers", root_path, class: "text-light" %>
+          </div>
+  
+          <% if user_signed_in? %>
+          <ul class = "nav justify-content-end">
+            <li class = "nav-item">
+              <%= link_to user_path(current_user.id) do %>
+                <p><i class="fa-solid fa-house"></i>Home</i></p>
+              <% end %>
+            </li>
+            
+            <li class = "nav-item">
+              <%= link_to users_path do %>
+                <p><i class="fa-solid fa-users"></i>Usera</p>
+              <% end %>
+            </li>
+            
+            <li class = "nav-item">
+              <%= link_to books_path do %>
+                <P><i class="fa-solid fa-book-open"></i>Books</P>
+              <% end %>
+            </li>
+
+            <li class = "nav-item">
+              <%= link_to destroy_user_session_path, method: :delete do %>
+                <p><i class="fa-solid fa-right-to-bracket">Log out</p>
+              <% end %>
+            </li>
+  
+          <% else %>
+            <li class = "nav-item">
+            <%= link_to root_path do %>
+              <p class ="nav-link text-light"><i class="fa-solid fa-house"></i>Home</i></p>
+            <% end %>
+            </li>
+  
+            <li class = "nav-item">
+            <%= link_to about_path do %>
+              <p class ="nav-link text-light"><i class="fa-solid fa-link"></i>About</p>
+            <% end %>
+            </li>
+
+            <li class = "nav-item">
+            <%= link_to new_user_registration_path do %>
+              <p class ="nav-link text-light"><i class="fa-solid fa-user-plus"></i>Sign up</p>
+            <% end %>
+            </li>
+  
+            <li class = "nav-item">
+            <%= link_to new_user_session_path do %>
+              <p class ="nav-link text-light"><i class="fa-solid fa-right-to-bracket"></i>Log in</p>
+            <% end %>
+            </li>
+          </ul>
+          <% end %>
+        </div>
+      </nav>
+      
     </header>
+    
     <%= flash[:notice] %>
+    
     <%= yield %>
+    
+    <footer>
+      <div class = "container">
+        <div class = "row justify-content-center">
+          <div class = "col">
+            <P>CopyRight Infratop.inc</P>
+          </div>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>
