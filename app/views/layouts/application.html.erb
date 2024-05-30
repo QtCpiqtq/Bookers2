@@ -12,62 +12,62 @@
 
   </head>
 
-  <body>
-    <header class = "bg-dark">
-      <nav class = "navbar">
+  <body class="d-flex flex-column vh-100">
+    <header>
+      <nav class = "navbar navbar-expand-lg bg-dark">
         <div class = "container">
           <div class = "navbar-brand">
             <%= link_to "Bookers", root_path, class: "text-light" %>
           </div>
   
+          <ul class="navbar-nav ml-auto">
           <% if user_signed_in? %>
-          <ul class = "nav justify-content-end">
             <li class = "nav-item">
               <%= link_to user_path(current_user.id) do %>
-                <p><i class="fa-solid fa-house"></i>Home</i></p>
+                <p class ="nav-link text-light"><i class="fa-solid fa-house"></i> Home</p>
               <% end %>
             </li>
             
             <li class = "nav-item">
               <%= link_to users_path do %>
-                <p><i class="fa-solid fa-users"></i>Usera</p>
+                <p class ="nav-link text-light"><i class="fa-solid fa-users"></i> Users</p>
               <% end %>
             </li>
             
             <li class = "nav-item">
               <%= link_to books_path do %>
-                <P><i class="fa-solid fa-book-open"></i>Books</P>
+                <p class ="nav-link text-light"><i class="fa-solid fa-book-open"></i> Books</P>
               <% end %>
             </li>
 
             <li class = "nav-item">
               <%= link_to destroy_user_session_path, method: :delete do %>
-                <p><i class="fa-solid fa-right-to-bracket">Log out</p>
+                <p class ="nav-link text-light"><i class="fa-solid fa-right-from-bracket"></i> Log out</p>
               <% end %>
             </li>
   
           <% else %>
             <li class = "nav-item">
             <%= link_to root_path do %>
-              <p class ="nav-link text-light"><i class="fa-solid fa-house"></i>Home</i></p>
+              <p class ="nav-link text-light"><i class="fa-solid fa-house"></i> Home</p>
             <% end %>
             </li>
   
             <li class = "nav-item">
             <%= link_to about_path do %>
-              <p class ="nav-link text-light"><i class="fa-solid fa-link"></i>About</p>
+              <p class ="nav-link text-light"><i class="fa-solid fa-link"></i> About</p>
             <% end %>
             </li>
 
             <li class = "nav-item">
             <%= link_to new_user_registration_path do %>
-              <p class ="nav-link text-light"><i class="fa-solid fa-user-plus"></i>Sign up</p>
+              <p class ="nav-link text-light"><i class="fa-solid fa-user-plus"></i> Sign up</p>
             <% end %>
             </li>
   
             <li class = "nav-item">
             <%= link_to new_user_session_path do %>
-              <p class ="nav-link text-light"><i class="fa-solid fa-right-to-bracket"></i>Log in</p>
+              <p class ="nav-link text-light"><i class="fa-solid fa-right-to-bracket"></i> Log in</p>
             <% end %>
             </li>
           </ul>
@@ -82,10 +82,10 @@
     <%= yield %>
     
     <footer>
-      <div class = "container">
-        <div class = "row justify-content-center">
+      <div class = "container mt-5">
+        <div class = "row text-center">
           <div class = "col">
-            <P>CopyRight Infratop.inc</P>
+            <p>CopyRight Infratop.inc</p>
           </div>
         </div>
       </div>
