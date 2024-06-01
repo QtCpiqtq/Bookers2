@@ -1,0 +1,31 @@
+<div class = "container">
+    <div class = "row">
+        <%= render 'books/list', user: @user, book: @book %>
+        
+        <div class = "col-md-8 offset-md-1">
+            <h2>Users</h2>
+            <table class ="table">
+                <tr>
+                    <th><p>image</p></th>
+                    <th><p>name</p></th>
+                    <th></th>
+                </tr>
+                
+                <% @users.each do |users| %>
+                <tr>
+                    <td>
+                        <%= image_tag users.get_profile_image(90, 90) %>
+                    </td>
+                    <td>
+                        <p><%= users.name %></p>
+                    </td>
+                    <td>
+                        <p><%= link_to "Show", user_path(users.id) %></p>
+                    </td>
+                </tr>
+                <% end %>
+            </table>
+        </div>
+    </div>
+</div>
+
